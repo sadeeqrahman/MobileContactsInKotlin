@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun Read_Contacts() {
         contact_list.text = ""
         val uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
@@ -66,16 +67,6 @@ class MainActivity : AppCompatActivity() {
             contact_list.text = "Contact List is Empty"
         }
 
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-
-
-
-        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
