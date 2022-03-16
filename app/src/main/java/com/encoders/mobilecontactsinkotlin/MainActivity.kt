@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
@@ -52,14 +53,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun Read_Contacts() {
-
+        contact_list.text = ""
         val uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
         val cursor = contentResolver.query(uri,null ,null,null,null)
         if (cursor!!.count > 0){
            while (cursor.moveToNext()){
                val contact_Name = cursor.getString(cursor.getColumnIndex( ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                val contact_Mobile = cursor.getString(cursor.getColumnIndex( ContactsContract.CommonDataKinds.Phone.NUMBER))
-               contact_list.text = "$contact_Name - $contact_Mobile\n"
+               contact_list.append("$contact_Name - $contact_Mobile\n")
            }
         }else{
             contact_list.text = "Contact List is Empty"
